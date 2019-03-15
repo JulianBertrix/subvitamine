@@ -1,0 +1,209 @@
+#Vue page home
+index:
+    path: /
+    controller: App\Controller\IndexController::index
+
+#RegistrationController
+register_admin:
+    path: /inscription
+    controller: App\Controller\RegistrationController::registerAdmin
+
+register_facilitateur:
+    path: /inscription/new
+    controller: App\Controller\RegistrationController::registerFacilitateur
+
+validate:
+    path: /verification
+    controller: App\Controller\RegistrationController::verifyToken
+
+sendmail:
+    path: /sendmail
+    controller: App\Controller\RegistrationController::resetPassword
+
+reset:
+    path: /reset
+    controller: App\Controller\RegistrationController::setPassword
+
+#SecurityController
+security_login:
+    path: /connexion
+    controller: App\Controller\SecurityController::login
+
+security_logout:
+    path: /deconnexion
+    controller: App\Controller\SecurityController::logout
+
+verify_login:
+    path: /verify_login
+    controller: App\Controller\SecurityController::verifyLogin
+
+#SessionController
+create_session:
+    path: /session/create
+    controller: App\Controller\SessionController:createSession
+
+api_participation:
+    path: /create/participant/session/{id}
+    controller: App\Controller\SessionController::registerSession
+
+api_live_participation:
+  path: /create/live/participant/session/{id}
+  controller: App\Controller\SessionController::registerLiveSession
+
+valider_participation:
+  path: /validate/participant/{idP}/session/{idS}
+  controller: App\Controller\SessionController::validateParticipant
+
+session:
+    path: /session/{id}
+    controller: App\Controller\SessionController::viewSession
+
+recap:
+  path: /recap/session/{id}
+  controller: App\Controller\SessionController::recapSession
+
+api_atelier:
+    path: /create/atelier/session/{id}
+    controller: App\Controller\SessionController::createAtelier
+
+api_seance:
+    path: /create/seance/session/{id}
+    controller: App\Controller\SessionController::createSeance
+
+api_seance_update:
+    path: /update/seance/{id}
+    controller: App\Controller\SessionController::updateSeance
+
+api_seance_remove:
+    path: /delete/seance/{id}
+    controller: App\Controller\SessionController::deleteSeance
+
+#api_session_create:
+#    path: /create/session
+#    controller: App\Controller\SessionController::newSession
+
+api_validate_session:
+    path: /validate/session/{id}
+    controller: App\Controller\SessionController::validateSession
+
+api_update_session:
+    path: /update/session/{id}
+    controller: App\Controller\SessionController::updateSession
+
+api_delete_session:
+    path: /delete/session/{id}
+    controller: App\Controller\SessionController::deleteSession
+
+api_add_facilitateur:
+    path: /add/facilitateur/session/{id}
+    controller: App\Controller\SessionController::addFacilitateur
+
+add_fta:
+    path: /add/atelier/facilitateur/{id}
+    controller: App\Controller\SessionController::addFacilitateurToAtelier
+
+api_delete_facilitateur:
+    path: /delete/facilitateur/{idFacilitateur}/session/{idSession}
+    controller: App\Controller\SessionController::deleteFacilitateur
+
+delete_facilitateur_dtable:
+  path: /delete/facilitateur/{idFacilitateur}
+  controller: App\Controller\SessionController::deleteFacilitateur
+
+
+api_delete_atelier:
+    path: /delete/atelier/{idAtelier}/seance/{idSeance}/session/{idSession}
+    controller: App\Controller\SessionController::deleteAtelier
+
+api_annuler_session:
+    path: /remove/session/{id}
+    controller: App\Controller\SessionController::removeSession
+
+#ajout_atelier_seance:
+#    path: /add/atelier/seance/{id}
+#    controller: App\Controller\SessionController::
+
+#Formulaire
+forgot:
+    path: /forgot
+    controller: App\Controller\Formulaire::setMailForgot
+
+newpassword:
+    path: /forgot
+    controller: App\Controller\Formulaire::newPassword
+
+#DetailSessionController
+detail_session:
+    path: /detail/session/{id}
+    controller: App\Controller\DetailSessionController::detailSession
+
+#ProfilAdminController
+open_inno:
+    path: /open_innovation
+    controller: App\Controller\ProfilAdminController::openInnovation
+
+profil_admin:
+    path: /profil
+    controller: App\Controller\ProfilAdminController::profilAdmin
+
+profil_admin_request:
+    path: update/profil
+    controller: App\Controller\ProfilAdminController::profilAdminRequest
+
+#Calendar
+toiba_fullcalendar:
+  resource: "@FullCalendarBundle/Resources/config/routing.yaml"
+
+get_calendar_session:
+    path: /get/calendar/session/{id}
+    controller: App\Controller\SessionController::getCalendarSession
+
+get_modal_seance:
+    path: /get/modal/seance/{id}
+    controller: App\Controller\SessionController::getModalSeance
+
+get_modal_session:
+  path: /get/modal/session/{id}
+  controller: App\Controller\SessionController::getModalSession
+
+update_calendar_session:
+    path: /update/calendar/session/{id}
+    controller: App\Controller\SessionController::updateCalendarSession
+
+update_calendar_seance:
+    path: /update/calendar/seance/{id}
+    controller: App\Controller\SessionController::updateCalendarSeance
+
+#AtelierController
+atelier:
+    path: /atelier/seance/{id}
+    controller: App\Controller\AtelierController::index
+
+get_idee_list:
+  path: /get/idea/liste/atelier/{id}
+  controller: App\Controller\AtelierController::getIdeaList
+
+add_idea:
+  path: /add/idea/atelier/{id}
+  controller: App\Controller\AtelierController::addIdea
+
+get_users_chat:
+  path: /chat
+  controller: App\Controller\AtelierController::getFacilitateurs
+
+get_message_chat:
+  path: /chat/get/message/seance/{id}
+  controller: App\Controller\AtelierController::afficherMessage
+
+post_message_chat:
+  path: /chat/post/message/seance/{id}
+  controller: App\Controller\AtelierController::saveMessage
+
+remove_facilitateur:
+  path: delete/atelier/{idA}/facilitateur/{idF}
+  controller: App\Controller\AtelierController::removeFacilitateur
+
+#Async Formulaire
+get_create_seance_modal:
+    path: /get/create/seance/modal/session/{id}
+    controller: App\Controller\SessionController::getCreateSeanceModal
